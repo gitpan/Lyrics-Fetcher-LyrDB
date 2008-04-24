@@ -11,11 +11,11 @@ Lyrics::Fetcher::LyrDB - The great new Lyrics::Fetcher::LyrDB!
 
 =head1 VERSION
 
-Version 0.01
+Version 0.02
 
 =cut
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 our $AGENT = "Perl/Lyric::Fetcher::LyrDB $VERSION";
 
 =head1 NAME
@@ -107,8 +107,8 @@ sub fetch
 
 	if(!scalar(@number))
 	{
-		carp($Lyrics::Fetcher::Error =
-			"No id number found in query response.");
+		$Lyrics::Fetcher::Error =
+			"No id number found in query response.";
 		return;
 	}
 
@@ -119,7 +119,7 @@ sub fetch
 	if($result =~ /error:\d\d\d/)
 	{
 		$result = $result =~ /\n+(.+)/;
-		carp($Lyrics::Fetcher::Error = $result);
+		$Lyrics::Fetcher::Error = $result;
 		return;
 	}
 
